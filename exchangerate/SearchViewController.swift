@@ -43,14 +43,15 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func callJSONData(){
-        let parameter: Parameters = ["authkey" : "your_key", "data" : "AP01"]
-        let url = "https://www.koreaexim.go.kr/site/program/financial/exchangeJSON?authkey=your_key&searchdate=20220810&data=AP01"
+        let parameter: Parameters = ["authkey" : "y6rBjV1m8HoXso6APfx7F2BWAWLA89Up", "data" : "AP01"]
+        let url = "https://www.koreaexim.go.kr/site/program/financial/exchangeJSON?authkey=y6rBjV1m8HoXso6APfx7F2BWAWLA89Up&searchdate=20220810&data=AP01"
 
 
         Alamofire.request(url, method: .get, parameters: parameter, headers: ["Content-Type" : "application/json", "Accept" : "application/json"]
         ).validate(statusCode: 200..<300)
             .responseJSON(completionHandler: {
                 (response) in
+//                print(response)
                 self.parseJSON(response)
                 
                 
@@ -72,9 +73,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
                         self.units.append(indexs["cur_unit"] as! String)
                         
                     }
-                   
                     self.tableView.reloadData()
-
                 }
                 
             case .failure(_) :
