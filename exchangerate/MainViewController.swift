@@ -62,7 +62,7 @@ class MainViewController: UIViewController{
         
         let result: Double = Double(money)! / calculateValue
         
-        moneytextField2.text! = String(format: "%2.f", result)
+        moneytextField2.text! = String(format: "%.2f", result)
         
     }
     
